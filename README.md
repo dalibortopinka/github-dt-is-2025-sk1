@@ -1,2 +1,3 @@
 # github-dt-is-2025-sk1
-Změna provedená na lokále (počítač v učebně H45) dne 2025-09-14 (9:54)
+Změna provedená na lokále (počítač v učebně H45) dne 2025-09-24 (9:54)
+Další změna 2025-09-24 (10:04).
