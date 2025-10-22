@@ -3,7 +3,7 @@ while (again == "a")
 {
     Console.Clear();
     Console.WriteLine("****************************");
-    Console.WriteLine("***** Seřazení dvou čísel *****");
+    Console.WriteLine("***** Největší ze tří čísel *****");
     Console.WriteLine("****************************");
     Console.WriteLine("******* Dalibor Topinka ********");
     Console.WriteLine("****************************");
@@ -13,13 +13,13 @@ while (again == "a")
     //Console.Write("Zadejte první číslo řady: ");
     //int first = int.Parse(Console.ReadLine());
 
-    //Vstup hodnoty do programu - řešený správně (určím hodnoty pro a a pro b)
+    //Vstup hodnoty do programu - řešený správně 
     Console.Write("Zadejte celé číslo - hodnota A:  ");
     int a;
 
     while (!int.TryParse(Console.ReadLine(), out a))
     {
-        Console.Write("Nezadali jste celé číslo. Zadejte hodnotu znovu: ");
+        Console.Write("Nezadali jste celé číslo. Zadejte hodnotu A znovu: ");
     }
 
 
@@ -28,20 +28,37 @@ while (again == "a")
 
     while (!int.TryParse(Console.ReadLine(), out b))
     {
-        Console.Write("Nezadali jste celé číslo. Zadejte hodnotu znovu: ");
+        Console.Write("Nezadali jste celé číslo. Zadejte hodnotu B znovu: ");
+    }
+
+ Console.Write("Zadejte celé číslo - hodnota C:  ");
+    int c;
+
+    while (!int.TryParse(Console.ReadLine(), out c))
+    {
+        Console.Write("Nezadali jste celé číslo. Zadejte hodnotu C znovu: ");
     }
 
     Console.WriteLine();
-    int pom;          //pomocná (sklenička)
     if (a > b)
     {
-        pom = a;
-        a = b;
-        b = pom;
-        Console.WriteLine("Došlo k prohození proměnných");
+        if (a > c) //pokud
+        {
+            Console.WriteLine($"Největší číslo je A = {a}");
+        }
+        else //jinak
+            Console.WriteLine($"Největší číslo je C = {c}");
+    }
+    else
+    {
+        if (b > c) 
+        {
+            Console.WriteLine($"Největší číslo je B = {b}");
+        }
+        else
+        Console.WriteLine($"Největší číslo je C = {c}");
     }
 
-    Console.WriteLine($"Seřazená čísla: {a}, {b}");
 
     Console.WriteLine();
     Console.WriteLine("Pro opakování programu stiskněte klávesu a.");
