@@ -15,9 +15,9 @@ while (again == "a")
     {
         Console.Write("Nezadali jste celé číslo. Zadejte hodnotu znovu: ");
     }
-    
-    Console.WriteLine(); 
-    
+
+    Console.WriteLine();
+
     for (int i = 0; i < size; i++)
     {
         for (int j = 0; j < size; j++)
@@ -30,7 +30,7 @@ while (again == "a")
             {
                 Console.Write(" ");
             }
-            
+
             Thread.Sleep(TimeSpan.FromMilliseconds(150));
         }
         Console.WriteLine();
