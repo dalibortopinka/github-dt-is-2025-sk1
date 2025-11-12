@@ -55,7 +55,7 @@ while (again == "a")
     Console.WriteLine("Pseudonáhodná čísla: ");
     for (int i = 0; i < n ; i++)
     {
-        myRandomNumbers[i] = myRandNumb.Next(lowerBound, upperBound);
+        myRandomNumbers[i] = myRandNumb.Next(lowerBound, upperBound+1);
         Console.WriteLine("{0}; ", myRandomNumbers[i]);
     }
 
