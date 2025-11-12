@@ -38,10 +38,10 @@ while (again == "a")
     }
 
     Console.WriteLine();
-    Console.WriteLine("***************************");
+    Console.WriteLine("=====================");
     Console.WriteLine("Zadané hodnoty: ");
     Console.WriteLine("Počet čísel: {0}; Dolní mez: {1}; Horní mez: {2};", n, lowerBound, upperBound);
-    Console.WriteLine("***************************");
+    Console.WriteLine("=====================");
 
     //Deklarace pole (velikost n = zadaná uživatelem)
     int[] myRandomNumbers = new int[n];
@@ -51,7 +51,7 @@ while (again == "a")
     Random myRandNumb = new Random();
 
     Console.WriteLine();
-    Console.WriteLine("***************************");
+    Console.WriteLine("=====================");
     Console.WriteLine("Pseudonáhodná čísla: ");
 
     for (int i = 0; i < n ; i++)
@@ -88,7 +88,53 @@ while (again == "a")
     Console.WriteLine($"Pozice prvního minima: {posMin}");
     Console.WriteLine("================================");
 
+    //Vykreslení přesýpacích hodin
+    if (max >= 3)
+    {
+        for (int i = 0; i < max; i++)
+        {
+            int spaces, stars;
+            if (i < max / 2)
+            {
+                spaces = i;
+                //horní polovina - s každým dalším řádkem ubývají 2 hvězdičky(po jedné z každé strany), přibývají mezery
+                stars = max - 2 * i;
+                //max 10 = 10 - 2*0=10, 10-2*1=8, 10-2*2=6 . . .                
+            }
+            else
+            {
+                spaces = max - i - 1;
+                if (max % 2 == 1) //pokud bude liché
+                {
+                    stars = 2 * (i - max / 2) + 1;
+                }
+                else
+                {
+                    stars = 2 * (i - max / 2) + 2;
+                }
+            }
+            Console.ForegroundColor = ConsoleColor.DarkBlue; //vykreslení s barvou
+            //sp = space
+            for (int sp = 0; sp < spaces; sp++)
+            {
+                Console.Write(" ");
+            }
 
+            //st = star 
+            for (int st = 0; st < stars; st++)
+            {
+                Console.Write("*");
+            }
+            Console.WriteLine();
+            Console.ResetColor();
+
+        }
+
+    }
+    else
+    {
+        Console.WriteLine("Maximum je menší než 3 => obrazec se nevykreslí");
+    }
 
     Console.WriteLine();
     Console.WriteLine("Pro opakování programu stiskněte klávesu a.");
