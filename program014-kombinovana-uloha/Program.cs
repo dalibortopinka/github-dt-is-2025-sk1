@@ -116,11 +116,55 @@ for (int i = 0; i < n; i++)
         Console.WriteLine("{0} ", myRandNumbs[i]);
     }
 
+// -----------------------------------------
+// Druhé, třetí, čtvrté největší číslo - řeší správně duplicity
+// -----------------------------------------
+    int uniqueCount = 0;
+    int lastValue = int.MinValue;
+    int second = 0, third = 0, fourth = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (myRandNumbs[i] != lastValue)
+        {
+            uniqueCount++;
+            lastValue = myRandNumbs[i];
+
+            if (uniqueCount ==2)
+                second = myRandNumbs[i];
+            if (uniqueCount ==3)
+                third = myRandNumbs[i];
+            if (uniqueCount ==4)
+                fourth = myRandNumbs[i];
+        }
+    }
+
+
+    Console.WriteLine();
+    Console.WriteLine("=================================");
+    Console.WriteLine("Druhé největší číslo: {0}", second);
+    Console.WriteLine("Třetí největší číslo: {0}", third);
+    Console.WriteLine("Čtvrté největší číslo: {0}", fourth);
+
+
+// -------------------------------------------
+// Medián
+// -------------------------------------------
+    int median;
+    if (n%2 == 1)
+        median = myRandNumbs[n/2];
+    else 
+        median = (myRandNumbs[n/2 -1] + myRandNumbs[n/2]) / 2;
+
+    Console.WriteLine();
+    Console.WriteLine("=======================");
+    Console.WriteLine("Medián je: {0}", median);
+
+
+
 
 
     Console.WriteLine();
     Console.WriteLine("Pro opakování programu stiskněte klávesu a.");
     again = Console.ReadLine();
-
 
 }
