@@ -159,7 +159,21 @@ for (int i = 0; i < n; i++)
     Console.WriteLine("=======================");
     Console.WriteLine("Medián je: {0}", median);
 
+// ----------------------------------------
+// Čtvrté největší číslo převedené do binární soustavy
+// ----------------------------------------
+    string bin = "";
+    int x = fourth;
+    if (x ==0) bin = "0";
+    while (x > 0)
+        {
+            bin = (x%2) + bin;
+            x /= 2; //to samé jako x = x/2;
+        }
 
+    Console.WriteLine();
+    Console.WriteLine("=====================");
+    Console.WriteLine($"Čtvrté největší číslo v binární soustavě: {fourth}(2) = {bin}");
 
 
 

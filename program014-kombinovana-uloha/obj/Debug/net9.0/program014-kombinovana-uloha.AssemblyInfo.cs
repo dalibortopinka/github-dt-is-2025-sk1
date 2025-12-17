@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("program014-kombinovana-uloha")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+25367b526df1feb666ff8723f4635af71366213c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3d3834860ff7a8e9c9b93cfb6f64a772ba0856c8")]
 [assembly: System.Reflection.AssemblyProductAttribute("program014-kombinovana-uloha")]
 [assembly: System.Reflection.AssemblyTitleAttribute("program014-kombinovana-uloha")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
