@@ -5,7 +5,7 @@ while (again == "a")
     Console.WriteLine("*******************************************");
     Console.WriteLine("***** Kombinovaná úloha *****");
     Console.WriteLine("*******************************************");
-    Console.WriteLine("************ Dalibor Topinka **************");
+    Console.WriteLine("*************** Dalibor Topinka ***************");
     Console.WriteLine("*******************************************");
     Console.WriteLine();
 
@@ -17,7 +17,6 @@ while (again == "a")
         Console.Write("Nezadali jste celé číslo. Zadejte znovu počet čísel: ");
     }
 
-
     Console.Write("Zadejte dolní mez (celé číslo): ");
     int lowerBound;
 
@@ -25,7 +24,6 @@ while (again == "a")
     {
         Console.Write("Nezadali jste celé číslo. Zadejte znovu dolní mez: ");
     }
-
 
     Console.Write("Zadejte horní mez (celé číslo): ");
     int upperBound;
@@ -36,147 +34,201 @@ while (again == "a")
     }
 
     Console.WriteLine();
-    Console.WriteLine("***************************");
-    Console.WriteLine("Zadané hodnoty: ");
-    Console.WriteLine("Počet čísel: {0}; Dolní mez: {1}; Horní mez: {2};", n, lowerBound, upperBound);
-    Console.WriteLine("***************************");
+    Console.WriteLine("================================================");
+    Console.WriteLine("Zadané hodnoty:");
+    Console.WriteLine("Počet čísel: {0}; Dolní mez: {1}; Horní mez: {2}", n, lowerBound, upperBound);
+    Console.WriteLine("================================================");
 
-    int[] myRandNumbs = new int[n];
+    // Deklarace pole
+    int[] numbs = new int[n];
 
+    //Random myRandNumb = new Random(50); // generování stejných čísel při stejném vstupu - hodí se pro testování
     Random myRandNumb = new Random();
 
     Console.WriteLine();
-    Console.WriteLine("***************************");
-    Console.WriteLine("Pseudonáhodná čísla: ");
-    for (int i = 0; i < n ; i++)
+    Console.WriteLine("=============================================");
+    Console.WriteLine("Pseudonáhodná čísla:");
+    for (int i = 0; i < n; i++)
     {
-        myRandNumbs[i] = myRandNumb.Next(lowerBound, upperBound+1);
-        Console.WriteLine("{0}; ", myRandNumbs[i]);
-    }
-// ----------------------------------------------
-//Hledání maxima a minima a všechny jejich pozice
-// ----------------------------------------------
-int max = myRandNumbs[0];
-int min = myRandNumbs[0];
-for (int i =1; i < n; i++)
-    {
-        if (myRandNumbs[i] > max)
-        {
-            max = myRandNumbs[i];
-        }
-        if (myRandNumbs[i] < min)
-        {
-            min = myRandNumbs[i];
-        }
-    }
-Console.WriteLine();
-Console.WriteLine("======================");
-Console.Write("Maximum je {0}; jeho pozice: ", max);
-for (int i = 0; i < n; i++)
-    {
-        if (myRandNumbs[i] == max)
-        {
-            Console.WriteLine("{0}; ", i);
-        }
+        numbs[i] = myRandNumb.Next(lowerBound, upperBound + 1);
+        Console.Write("{0}; ", numbs[i]);
     }
 
-Console.Write("Minimum je {0}; jeho pozice: ", min);
-for (int i = 0; i < n; i++)
+    // -----------------------------------------
+    // Hledání max a min + všechny jejich pozice
+    // -----------------------------------------
+    int max = numbs[0];
+    int min = numbs[0];
+    for (int i = 1; i < n; i++)
     {
-        if (myRandNumbs[i] == min)
-        {
-            Console.Write("{0}; ", i);
-        }
+        if (numbs[i] > max)
+            max = numbs[i];
+
+        if (numbs[i] < min)
+            min = numbs[i]; 
     }
 
-// ----------------------------------------------
-//Seřazení pole - Shaker sort neumím - použiji aspoň bubble sort
-// ----------------------------------------------
+    Console.WriteLine();
+    Console.WriteLine("---------------------------------------");
+    Console.Write($"Maximum je {max}; jeho pozice: ");
+    for (int i = 0; i < n; i++) {
+        if (numbs[i] == max)
+            Console.Write($"{i}; ");
+    }
+    Console.WriteLine();
+    Console.WriteLine("---------------------------------------");
+    Console.Write($"Minimum je {min}; jeho pozice: ");
+    for (int i = 0; i < n; i++) {
+        if (numbs[i] == min)
+            Console.Write($"{i}; ");
+    }
 
-for (int i = 0; i < n -1; i++)
+    // -----------------------------------------
+    // Seřazení pole - Shaker sort neumím - použiji alespoň bubble sort
+    // -----------------------------------------
+    for (int i = 0; i < n - 1; i++)
     {
         for (int j = 0; j < n - i - 1; j++)
         {
-            if (myRandNumbs[j] < myRandNumbs[j + 1])
+            
+            if (numbs[j] < numbs[j + 1])
             {
-                int temp = myRandNumbs[j+1];
-                myRandNumbs[j+1] = myRandNumbs[j];
-                myRandNumbs[j] = temp;
+                int tmp = numbs[j + 1];
+                numbs[j + 1] = numbs[j];
+                numbs[j] = tmp;
             }
         }
     }
-
     Console.WriteLine();
     Console.WriteLine();
-    Console.WriteLine("===============================");
+    Console.WriteLine("==================================");
     Console.WriteLine("Seřazená čísla pomocí Bubble sortu: ");
-    Console.WriteLine();
-for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
-        Console.WriteLine("{0} ", myRandNumbs[i]);
+        Console.Write("{0}; ", numbs[i]);
     }
 
-// -----------------------------------------
-// Druhé, třetí, čtvrté největší číslo - řeší správně duplicity
-// -----------------------------------------
+    // ------------------------------------
+    // Druhé, třetí, čtvrté největší číslo - řeší správně duplicity
+    // ------------------------------------ 
     int uniqueCount = 0;
     int lastValue = int.MinValue;
     int second = 0, third = 0, fourth = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (myRandNumbs[i] != lastValue)
+    for (int i = 0; i < n; i++) {
+        if (numbs[i] != lastValue)
         {
             uniqueCount++;
-            lastValue = myRandNumbs[i];
+            lastValue = numbs[i];
 
-            if (uniqueCount ==2)
-                second = myRandNumbs[i];
-            if (uniqueCount ==3)
-                third = myRandNumbs[i];
-            if (uniqueCount ==4)
-                fourth = myRandNumbs[i];
+            if (uniqueCount == 2) 
+                second = numbs[i];
+            if (uniqueCount == 3)
+                third = numbs[i];
+            if (uniqueCount == 4)
+                fourth = numbs[i];
         }
+    }
+    
+    Console.WriteLine();
+    Console.WriteLine("==================================");
+    Console.WriteLine("Druhé největší číslo: " + second);
+    Console.WriteLine("Třetí největší číslo: " + third);
+    Console.WriteLine("Čtvrté největší číslo: " + fourth);
+
+    // ------------------------------------
+    // Medián
+    // ------------------------------------
+    int median;
+    if (n % 2 == 1)
+        median = numbs[n / 2];
+    else
+        median = (numbs[n / 2 - 1] + numbs[n / 2]) / 2;
+    
+    Console.WriteLine();
+    Console.WriteLine("=================================="); 
+    Console.WriteLine($"Medián: {median}");
+
+    // ------------------------------------
+    // Čtvrté největší číslo převedené do binární soustavy
+    // ------------------------------------
+    string bin = "";
+    int x = fourth;
+    if (x == 0) bin = "0";
+    while (x > 0)
+    {
+        bin = (x % 2) + bin;
+        x /= 2; // to samé jako x = x / 2;
     }
 
 
     Console.WriteLine();
-    Console.WriteLine("=================================");
-    Console.WriteLine("Druhé největší číslo: {0}", second);
-    Console.WriteLine("Třetí největší číslo: {0}", third);
-    Console.WriteLine("Čtvrté největší číslo: {0}", fourth);
-
-
-// -------------------------------------------
-// Medián
-// -------------------------------------------
-    int median;
-    if (n%2 == 1)
-        median = myRandNumbs[n/2];
-    else 
-        median = (myRandNumbs[n/2 -1] + myRandNumbs[n/2]) / 2;
-
-    Console.WriteLine();
-    Console.WriteLine("=======================");
-    Console.WriteLine("Medián je: {0}", median);
-
-// ----------------------------------------
-// Čtvrté největší číslo převedené do binární soustavy
-// ----------------------------------------
-    string bin = "";
-    int x = fourth;
-    if (x ==0) bin = "0";
-    while (x > 0)
-        {
-            bin = (x%2) + bin;
-            x /= 2; //to samé jako x = x/2;
-        }
-
-    Console.WriteLine();
-    Console.WriteLine("=====================");
+    Console.WriteLine("=================================="); 
     Console.WriteLine($"Čtvrté největší číslo v binární soustavě: {fourth}(2) = {bin}");
 
+        // ------------------------------------
+    // Obrazec: výška podle mediánu a šířka podle třetího největšího čísla
+    // ------------------------------------
+    Console.WriteLine();
+    Console.WriteLine("=================================="); 
+    
+    int height = median;
+    int width = third;
 
+    Console.WriteLine($"Obrazec jehož výška je {height} a šířka je {width}");
+    Console.WriteLine();
 
+    int part = height / 3;
+
+    // rozhodnutí podle sudé / liché šířky
+    int smallWidth;
+    int indent;
+
+    // počet potřebných mezer pro první a třetí část obrazce
+    if (width % 2 == 0)
+    {
+        smallWidth = 2;
+        indent = (width - 2) / 2;
+    }
+    else
+    {
+        smallWidth = 3;
+        indent = (width - 3) / 2;
+    }
+
+    for (int i = 0; i < height; i++)
+    {
+        // horní část
+        if (i < part)
+        {
+            for (int s = 0; s < indent; s++)
+                Console.Write("  ");
+
+            for (int j = 0; j < smallWidth; j++)
+                Console.Write("* ");
+
+            Console.WriteLine();
+        }
+        // prostřední část
+        else if (i < height - part)
+        {
+            for (int j = 0; j < width; j++)
+                Console.Write("* ");
+
+            Console.WriteLine();
+        }
+        // dolní část
+        else
+        {
+            for (int s = 0; s < indent; s++)
+                Console.Write("  ");
+
+            for (int j = 0; j < smallWidth; j++)
+                Console.Write("* ");
+
+            Console.WriteLine();
+        }
+    }
+    
     Console.WriteLine();
     Console.WriteLine("Pro opakování programu stiskněte klávesu a.");
     again = Console.ReadLine();
